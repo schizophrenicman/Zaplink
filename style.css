@@ -1,15 +1,14 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  margin-top: 2px;
 }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: white;
-  color: black;
+  background-color: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -17,17 +16,19 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 20px 80px;
-  background: none;
   position: sticky;
   top: 0;
+  background-color: #ffffff;
   z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
-  color: black;
+  color: #000;
   letter-spacing: 1px;
+  animation: slideIn 0.8s ease forwards;
 }
 
 .nav-links {
@@ -37,20 +38,37 @@ body {
 }
 
 .nav-links li a {
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
-  color: black;
+  color: #000;
   font-weight: 500;
-  transition: all 0.3s ease;
   position: relative;
+  transition: color 0.3s ease;
 }
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #2575fc;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s ease;
+}
+
 .nav-links li a:hover {
-  color:#2575fc;
+  color: #2575fc;
 }
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
 .cta-button {
   text-decoration: none;
   background: linear-gradient(135deg, #6a11cb, #2575fc);
-  padding: 12px 26px;
+  padding: 12px 28px;
   border-radius: 50px;
   color: #fff;
   font-weight: 600;
@@ -58,67 +76,112 @@ body {
 }
 
 .cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(37,117,252,0.3);
+}
+
+.home {
+  padding: 80px 70px;
+  background-color: #fdfaf6;
+  text-align: left;
+  animation: fadeIn 1s ease forwards;
+}
+
+.home .one, .home .two {
+  font-size: 65px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  animation: slideIn 0.8s ease forwards;
+}
+
+.home .three {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  max-width: 700px;
+  line-height: 1.5;
+  animation: fadeIn 1s ease forwards;
+}
+
+#shorten-form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  gap: 20px;
+}
+
+.four {
+  height: 55px;
+  padding: 0 25px;
+  border-radius: 50px;
+  border: 1.5px solid #ccc;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.four:focus {
+  outline: none;
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37,117,252,0.3);
+}
+
+.home button {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 30px;
+  font-size: 22px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.home button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(106,17,203,0.3);
+}
+
+.home h4 {
+  margin-top: 15px;
+  font-weight: 300;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+  
   .nav-links {
     display: none;
   }
 
-  .navbar {
-    padding: 20px 30px;
+  .home {
+    padding: 50px 30px;
   }
 
-  .cta-button {
-    padding: 10px 22px;
+  .home .one, .home .two {
+    font-size: 42px;
   }
-}
-.home {
-    margin-top: 25px;
-    background-color: #fdfaf6;
-}
-.home .one {
-    padding-top: 30px;
-    margin-top: 20x;
-    margin-left: 70px;
-    font-size: 70px;
-}
-.home .two{
-    margin-left: 70px;
-    font-size: 70px;
-}
-.home .three{
-    margin-top: 20px;
-    margin-left: 70px;
+
+  .four {
+    width: 100%;
+  }
+
+  .home button {
     font-size: 20px;
-    font-weight: 200;
+    padding: 12px 24px;
+  }
 }
-.home .four{
-    border: black;
-    height: 50px;
-    width: 1000px;
-    border-radius: 50px;
-    background-color: white;
-    margin-top: 20px;
-    margin-left: 70px;
-    font-size: 25px;
-}
-.home button{
-    text-decoration: none;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    border: none;
-    border-radius: 50px;
-    color: #fff;
-    font-weight: 600;
-    transition: 0.3s ease;
-    margin-top: 5px;
-    padding: 12px 26px;
-    font-size: 25px;
-}
-.home h4{
-    margin-top: 20px;
-    margin-left: 70px;
-    font-weight: 100;
-}
-
